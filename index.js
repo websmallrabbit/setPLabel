@@ -29,13 +29,17 @@ fs.readFile('./aaa.txt', 'utf-8', function (err, data) {
     var tempArr = []
     tempArr = data.split(/[\s\n]/)
     str = tempArr.map(val => {
+      // console.log(val.substring(0,10).split('、')[0].split('.').length)
+      let length = val.substring(0,10).split('、')[0].split('.').length
        if(IsInArray(typeOpt, val.substring(0,1))) {
          return '<h2>' + val + '</h2>' + '<br/>'
-       } else if(val.substring(0,4).length === 4 && val.substring(0,4).charAt(val.substring(0,4).length -1) === '、') {
+       } else if(length === 2) {
+         return '<p class="two">' + val + '</p>' + '<br/>'
+       }else if(length === 3) {
          return '<p class="three">' + val + '</p>' + '<br/>'
-       }else if(val.substring(0,6).length === 6 && val.substring(0,6).charAt(val.substring(0,6).length -1) === '、') {
-         return '<p class="four">' + val + '</p>' + '<br/>'
-       } else if(val) {
+       } else if(length === 4) {
+        return '<p class="four">' + val + '</p>' + '<br/>'
+      } else if(val) {
          return '<p>' + val + '</p>' + '<br/>'
        }
     })
