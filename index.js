@@ -30,14 +30,12 @@ fs.readFile('./aaa.txt', 'utf-8', function (err, data) {
     tempArr = data.split(/[\s\n]/)
     str = tempArr.map(val => {
        if(IsInArray(typeOpt, val.substring(0,1))) {
-         // str += '<h2>' + val + '</h2>'
          return '<h2>' + val + '</h2>' + '<br/>'
        } else if(val.substring(0,4).length === 4 && val.substring(0,4).charAt(val.substring(0,4).length -1) === '、') {
          return '<p class="three">' + val + '</p>' + '<br/>'
        }else if(val.substring(0,6).length === 6 && val.substring(0,6).charAt(val.substring(0,6).length -1) === '、') {
          return '<p class="four">' + val + '</p>' + '<br/>'
        } else if(val) {
-         // str += '<p>' + val + '</p>'
          return '<p>' + val + '</p>' + '<br/>'
        }
     })
